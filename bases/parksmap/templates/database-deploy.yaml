@@ -5,11 +5,11 @@ metadata:
     alpha.image.policy.openshift.io/resolve-names: '*'
     app.openshift.io/custom-icon: ""
     app.openshift.io/route-disabled: "false"
-    deployment.kubernetes.io/revision: "2"
+    deployment.kubernetes.io/revision: "1"
     image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"mongodb:6.0.4","namespace":"wksp-user1"},"fieldPath":"spec.template.spec.containers[?(@.name==\"mongodb\")].image","paused":false}]'
     openshift.io/generated-by: OpenShiftWebConsole
-  creationTimestamp: "2026-03-19T09:41:42Z"
-  generation: 2
+  creationTimestamp: "2026-03-19T12:04:35Z"
+  generation: 1
   labels:
     app: workshop
     app.kubernetes.io/component: mongodb
@@ -22,8 +22,8 @@ metadata:
     role: database
   name: mongodb
   namespace: wksp-user1
-  resourceVersion: "432180"
-  uid: 59775bed-3684-4bcf-a174-2507e5caa778
+  resourceVersion: "533875"
+  uid: 75059a21-5b78-40b4-bb9c-0e0964b649bf
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

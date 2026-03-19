@@ -1,0 +1,37 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: ""
+    app.openshift.io/vcs-uri: https://github.com/openshift-roadshow/nationalparks.git
+    openshift.io/generated-by: OpenShiftWebConsole
+    openshift.io/host.generated: "true"
+  creationTimestamp: "2026-03-19T12:01:16Z"
+  generation: 1
+  labels:
+    app: workshop
+    app.kubernetes.io/component: nationalparks
+    app.kubernetes.io/instance: nationalparks
+    app.kubernetes.io/name: nationalparks
+    app.kubernetes.io/part-of: workshop
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-11-ubi8
+    component: nationalparks
+    role: backend
+    type: parksmap-backend
+  name: nationalparks
+  namespace: wksp-user1
+  resourceVersion: "534625"
+  uid: 8ae1bff2-fc4f-47a6-9f1c-1fbc5add3e7c
+spec:
+  host: nationalparks-wksp-user1.apps.cluster-m4xv6.dynamic.redhatworkshops.io
+  port:
+    targetPort: 8080-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: nationalparks
+    weight: 100
+  wildcardPolicy: None

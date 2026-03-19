@@ -6,23 +6,25 @@ metadata:
     app.openshift.io/route-disabled: "false"
     app.openshift.io/vcs-ref: ""
     app.openshift.io/vcs-uri: https://github.com/openshift-roadshow/nationalparks.git
-    deployment.kubernetes.io/revision: "2"
+    deployment.kubernetes.io/revision: "4"
     image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"nationalparks:latest","namespace":"wksp-user1"},"fieldPath":"spec.template.spec.containers[?(@.name==\"nationalparks\")].image","paused":false}]'
     openshift.io/generated-by: OpenShiftWebConsole
-  creationTimestamp: "2026-03-19T09:29:23Z"
-  generation: 2
+  creationTimestamp: "2026-03-19T12:01:15Z"
+  generation: 4
   labels:
-    app: nationalparks
+    app: workshop
     app.kubernetes.io/component: nationalparks
     app.kubernetes.io/instance: nationalparks
     app.kubernetes.io/name: nationalparks
     app.kubernetes.io/part-of: workshop
     app.openshift.io/runtime: java
     app.openshift.io/runtime-version: openjdk-11-ubi8
+    component: nationalparks
+    role: backend
   name: nationalparks
   namespace: wksp-user1
-  resourceVersion: "418988"
-  uid: 08c4f013-aa8d-4905-889f-805e11773bd9
+  resourceVersion: "535857"
+  uid: 105baeea-ae33-4cd2-b266-2d68cb3fb96c
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -39,11 +41,37 @@ spec:
     metadata:
       labels:
         app: nationalparks
+        component: nationalparks
         deployment: nationalparks
+        role: backend
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/wksp-user1/nationalparks@sha256:dc9708b6c3bf387c9f097efb6bebafb9f060cb8c380c06bfd8dc07461d05ab05
+      - env:
+        - name: MONGODB_SERVER_HOST
+          value: mongodb
+        - name: MONGODB_DATABASE
+          value: parksapp
+        - name: MONGODB_USER
+          valueFrom:
+            secretKeyRef:
+              key: app-usr
+              name: mongodb-credentials
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: app-pwd
+              name: mongodb-credentials
+        image: image-registry.openshift-image-registry.svc:5000/wksp-user1/nationalparks@sha256:92e2bfb7983e288a310e352e6031f18859eb93edc363e721184b6c75c2f91386
         imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ws/healthz/
+            port: 8080
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
         name: nationalparks
         ports:
         - containerPort: 8080
@@ -52,6 +80,15 @@ spec:
           protocol: TCP
         - containerPort: 8778
           protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ws/healthz/
+            port: 8080
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File

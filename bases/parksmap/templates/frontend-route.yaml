@@ -3,7 +3,7 @@ kind: Route
 metadata:
   annotations:
     openshift.io/host.generated: "true"
-  creationTimestamp: "2026-03-19T09:21:27Z"
+  creationTimestamp: "2026-03-19T11:55:59Z"
   generation: 1
   labels:
     app: parksmap
@@ -14,8 +14,8 @@ metadata:
     app.openshift.io/runtime-version: latest
   name: parksmap
   namespace: wksp-user1
-  resourceVersion: "412357"
-  uid: 12f14e30-5e27-41cc-8a88-d707e9e6bbe2
+  resourceVersion: "525440"
+  uid: ae6ec6a1-a0e8-4f39-86ca-81fbcef8afcb
 spec:
   host: parksmap-wksp-user1.apps.cluster-m4xv6.dynamic.redhatworkshops.io
   port:
@@ -27,13 +27,3 @@ spec:
     name: parksmap
     weight: 100
   wildcardPolicy: None
-status:
-  ingress:
-  - conditions:
-    - lastTransitionTime: "2026-03-19T09:21:27Z"
-      status: "True"
-      type: Admitted
-    host: parksmap-wksp-user1.apps.cluster-m4xv6.dynamic.redhatworkshops.io
-    routerCanonicalHostname: router-default.apps.cluster-m4xv6.dynamic.redhatworkshops.io
-    routerName: default
-    wildcardPolicy: None

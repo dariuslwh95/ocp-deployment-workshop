@@ -1,27 +1,29 @@
-ersion: v1
+apiVersion: v1
 kind: Service
 metadata:
   annotations:
     app.openshift.io/vcs-ref: ""
     app.openshift.io/vcs-uri: https://github.com/openshift-roadshow/nationalparks.git
     openshift.io/generated-by: OpenShiftWebConsole
-  creationTimestamp: "2026-03-19T09:29:24Z"
+  creationTimestamp: "2026-03-19T12:01:15Z"
   labels:
-    app: nationalparks
+    app: workshop
     app.kubernetes.io/component: nationalparks
     app.kubernetes.io/instance: nationalparks
     app.kubernetes.io/name: nationalparks
     app.kubernetes.io/part-of: workshop
     app.openshift.io/runtime: java
     app.openshift.io/runtime-version: openjdk-11-ubi8
+    component: nationalparks
+    role: backend
   name: nationalparks
   namespace: wksp-user1
-  resourceVersion: "418053"
-  uid: 7ee6dd90-a9ab-40e9-819c-edeaf661d0a2
+  resourceVersion: "529239"
+  uid: 944425a5-9658-4c18-939d-7127b72d48b2
 spec:
-  clusterIP: 172.231.216.187
+  clusterIP: 172.231.123.93
   clusterIPs:
-  - 172.231.216.187
+  - 172.231.123.93
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4

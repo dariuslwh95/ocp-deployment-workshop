@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     openshift.io/generated-by: OpenShiftWebConsole
-  creationTimestamp: "2026-03-19T09:08:47Z"
+  creationTimestamp: "2026-03-19T11:53:52Z"
   labels:
     app: parksmap
     app.kubernetes.io/component: parksmap
@@ -13,12 +13,12 @@ metadata:
     app.openshift.io/runtime-version: latest
   name: parksmap
   namespace: wksp-user1
-  resourceVersion: "403285"
-  uid: 32ec1a13-18ba-44ad-9fbb-90a3d92169bc
+  resourceVersion: "523885"
+  uid: 7714a70c-c60b-4ab2-8dab-8b8aa2048aef
 spec:
-  clusterIP: 172.231.2.12
+  clusterIP: 172.231.183.189
   clusterIPs:
-  - 172.231.2.12
+  - 172.231.183.189
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
@@ -33,5 +33,3 @@ spec:
     deployment: parksmap
   sessionAffinity: None
   type: ClusterIP
-status:
-  loadBalancer: {}

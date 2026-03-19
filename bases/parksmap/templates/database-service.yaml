@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     openshift.io/generated-by: OpenShiftWebConsole
-  creationTimestamp: "2026-03-19T09:41:42Z"
+  creationTimestamp: "2026-03-19T12:04:35Z"
   labels:
     app: mongodb
     app.kubernetes.io/component: mongodb
@@ -13,12 +13,12 @@ metadata:
     app.openshift.io/runtime-version: 6.0.4
   name: mongodb
   namespace: wksp-user1
-  resourceVersion: "427469"
-  uid: 0c491ffe-f1c3-49dc-a088-c02c5f8b6680
+  resourceVersion: "531800"
+  uid: 399fd411-2cce-466d-b8bc-bfd05c9394ad
 spec:
-  clusterIP: 172.231.147.59
+  clusterIP: 172.231.196.180
   clusterIPs:
-  - 172.231.147.59
+  - 172.231.196.180
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
