@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: "2026-03-19T09:24:08Z"
+  name: view
+  namespace: wksp-user1
+  resourceVersion: "414286"
+  uid: ddb75611-2f2e-4102-9a3f-65ee368ba5bf
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: wksp-user1

@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/route-disabled: "false"
+    app.openshift.io/vcs-ref: ""
+    app.openshift.io/vcs-uri: https://github.com/openshift-roadshow/nationalparks.git
+    deployment.kubernetes.io/revision: "2"
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"nationalparks:latest","namespace":"wksp-user1"},"fieldPath":"spec.template.spec.containers[?(@.name==\"nationalparks\")].image","paused":false}]'
+    openshift.io/generated-by: OpenShiftWebConsole
+  creationTimestamp: "2026-03-19T09:29:23Z"
+  generation: 2
+  labels:
+    app: nationalparks
+    app.kubernetes.io/component: nationalparks
+    app.kubernetes.io/instance: nationalparks
+    app.kubernetes.io/name: nationalparks
+    app.kubernetes.io/part-of: workshop
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-11-ubi8
+  name: nationalparks
+  namespace: wksp-user1
+  resourceVersion: "418988"
+  uid: 08c4f013-aa8d-4905-889f-805e11773bd9
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: nationalparks
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nationalparks
+        deployment: nationalparks
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/wksp-user1/nationalparks@sha256:dc9708b6c3bf387c9f097efb6bebafb9f060cb8c380c06bfd8dc07461d05ab05
+        imagePullPolicy: Always
+        name: nationalparks
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+        - containerPort: 8778
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

@@ -1,0 +1,39 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  creationTimestamp: "2026-03-19T09:21:27Z"
+  generation: 1
+  labels:
+    app: parksmap
+    app.kubernetes.io/component: parksmap
+    app.kubernetes.io/instance: parksmap
+    app.kubernetes.io/name: parksmap
+    app.kubernetes.io/part-of: workshop
+    app.openshift.io/runtime-version: latest
+  name: parksmap
+  namespace: wksp-user1
+  resourceVersion: "412357"
+  uid: 12f14e30-5e27-41cc-8a88-d707e9e6bbe2
+spec:
+  host: parksmap-wksp-user1.apps.cluster-m4xv6.dynamic.redhatworkshops.io
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: parksmap
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: "2026-03-19T09:21:27Z"
+      status: "True"
+      type: Admitted
+    host: parksmap-wksp-user1.apps.cluster-m4xv6.dynamic.redhatworkshops.io
+    routerCanonicalHostname: router-default.apps.cluster-m4xv6.dynamic.redhatworkshops.io
+    routerName: default
+    wildcardPolicy: None

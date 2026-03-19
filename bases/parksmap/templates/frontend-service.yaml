@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+  creationTimestamp: "2026-03-19T09:08:47Z"
+  labels:
+    app: parksmap
+    app.kubernetes.io/component: parksmap
+    app.kubernetes.io/instance: parksmap
+    app.kubernetes.io/name: parksmap
+    app.kubernetes.io/part-of: workshop
+    app.openshift.io/runtime-version: latest
+  name: parksmap
+  namespace: wksp-user1
+  resourceVersion: "403285"
+  uid: 32ec1a13-18ba-44ad-9fbb-90a3d92169bc
+spec:
+  clusterIP: 172.231.2.12
+  clusterIPs:
+  - 172.231.2.12
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: parksmap
+    deployment: parksmap
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

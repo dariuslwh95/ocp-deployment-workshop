@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/route-disabled: "false"
+    deployment.kubernetes.io/revision: "1"
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"parksmap:latest","namespace":"wksp-user1"},"fieldPath":"spec.template.spec.containers[?(@.name==\"parksmap\")].image","paused":false}]'
+    openshift.io/generated-by: OpenShiftWebConsole
+  creationTimestamp: "2026-03-19T09:08:47Z"
+  generation: 1
+  labels:
+    app: workshop
+    app.kubernetes.io/component: parksmap
+    app.kubernetes.io/instance: parksmap
+    app.kubernetes.io/name: parksmap
+    app.kubernetes.io/part-of: workshop
+    app.openshift.io/runtime-namespace: wksp-user1
+    component: parksmap
+    role: frontend
+  name: parksmap
+  namespace: wksp-user1
+  resourceVersion: "403977"
+  uid: 25995e52-9cb0-4381-ba77-93d6e19b0ae9
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: parksmap
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+      labels:
+        app: parksmap
+        deployment: parksmap
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/wksp-user1/parksmap@sha256:89d1e324846cb431df9039e1a7fd0ed2ba0c51aafbae73f2abd70a83d5fa173b
+        imagePullPolicy: Always
+        name: parksmap
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
